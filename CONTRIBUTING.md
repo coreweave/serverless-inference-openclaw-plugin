@@ -3,6 +3,12 @@
 CoreWeave members with write access may submit pull requests. External users may
 submit issues, but external pull requests are not accepted.
 
+## Contribution License Agreement
+
+Before making a submission, you must agree to the
+[CoreWeave Contribution License Agreement](CLA.md). The agreement does not change
+the contribution policy above; external pull requests are not accepted.
+
 ## License headers
 <!--- REUSE-IgnoreStart -->
 
