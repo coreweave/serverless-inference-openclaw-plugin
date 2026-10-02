@@ -1,0 +1,508 @@
+{
+  "id": "coreweave",
+  "name": "CoreWeave",
+  "description": "CoreWeave Serverless Inference (formerly Weights & Biases Inference) model provider for OpenClaw.",
+  "activation": {
+    "onStartup": false
+  },
+  "providers": [
+    "coreweave"
+  ],
+  "providerAuthChoices": [
+    {
+      "provider": "coreweave",
+      "method": "api-key",
+      "choiceId": "coreweave-api-key",
+      "choiceLabel": "CoreWeave API key",
+      "groupId": "coreweave",
+      "groupLabel": "CoreWeave",
+      "groupHint": "Open models on CoreWeave GPUs (formerly Weights & Biases Inference)",
+      "optionKey": "coreweaveApiKey",
+      "cliFlag": "--coreweave-api-key",
+      "cliOption": "--coreweave-api-key <key>",
+      "cliDescription": "CoreWeave API key"
+    }
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "project": {
+        "type": "string",
+        "description": "Optional W&B/CoreWeave team/project in 'team/project' form, sent as the openai-project header to attribute usage. When unset, W&B uses your default entity and an 'inference' project."
+      }
+    }
+  },
+  "setup": {
+    "providers": [
+      {
+        "id": "coreweave",
+        "authMethods": [
+          "api-key"
+        ],
+        "envVars": [
+          "COREWEAVE_API_KEY"
+        ]
+      }
+    ]
+  },
+  "modelCatalog": {
+    "providers": {
+      "coreweave": {
+        "baseUrl": "https://api.inference.wandb.ai/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "moonshotai/Kimi-K2.7-Code",
+            "name": "Moonshot AI: Kimi K2.7 Code",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.71,
+              "output": 3.5,
+              "cacheRead": 0.15
+            }
+          },
+          {
+            "id": "moonshotai/Kimi-K2.6",
+            "name": "Moonshot AI: Kimi K2.6",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.65,
+              "output": 3.41,
+              "cacheRead": 0.15
+            }
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V4-Pro",
+            "name": "DeepSeek: DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 1048576,
+            "cost": {
+              "input": 1.15,
+              "output": 2.55,
+              "cacheRead": 0.2
+            }
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V4-Flash",
+            "name": "DeepSeek: DeepSeek V4 Flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 1048576,
+            "cost": {
+              "input": 0.14,
+              "output": 0.28,
+              "cacheRead": 0.07
+            }
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V3.1",
+            "name": "DeepSeek: DeepSeek V3.1",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 161000,
+            "maxTokens": 161000,
+            "cost": {
+              "input": 0.55,
+              "output": 1.65,
+              "cacheRead": 0.55
+            }
+          },
+          {
+            "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+            "name": "Qwen: Qwen3 30B A3B Instruct 2507",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.1,
+              "output": 0.3,
+              "cacheRead": 0.1
+            }
+          },
+          {
+            "id": "Qwen/Qwen3.6-35B-A3B",
+            "name": "Qwen: Qwen3.6 35B A3B",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.25,
+              "output": 1.25,
+              "cacheRead": 0.25
+            }
+          },
+          {
+            "id": "Qwen/Qwen3.6-27B",
+            "name": "Qwen: Qwen3.6 27B",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.6,
+              "output": 3.6,
+              "cacheRead": 0.12
+            }
+          },
+          {
+            "id": "Qwen/Qwen3.5-35B-A3B",
+            "name": "Qwen: Qwen3.5-35B-A3B",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.25,
+              "output": 1.25,
+              "cacheRead": 0.25
+            }
+          },
+          {
+            "id": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
+            "name": "NVIDIA: Nemotron 3 Ultra",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.5,
+              "output": 2.15,
+              "cacheRead": 0.1
+            }
+          },
+          {
+            "id": "openai/gpt-oss-120b",
+            "name": "OpenAI: gpt-oss-120b",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.03,
+              "output": 0.17,
+              "cacheRead": 0.03
+            }
+          },
+          {
+            "id": "openai/gpt-oss-20b",
+            "name": "OpenAI: gpt-oss-20b",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.03,
+              "output": 0.13,
+              "cacheRead": 0.03
+            }
+          },
+          {
+            "id": "google/gemma-4-31B-it",
+            "name": "Google: Gemma 4 31B",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.1,
+              "output": 0.34,
+              "cacheRead": 0.1
+            }
+          },
+          {
+            "id": "meta-llama/Llama-3.3-70B-Instruct",
+            "name": "Meta: Llama 3.3 70B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 128000,
+            "maxTokens": 128000,
+            "cost": {
+              "input": 0.71,
+              "output": 0.71,
+              "cacheRead": 0.71
+            }
+          },
+          {
+            "id": "meta-llama/Llama-3.1-70B-Instruct",
+            "name": "Meta: Llama 3.1 70B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.8,
+              "output": 0.8,
+              "cacheRead": 0.8
+            }
+          },
+          {
+            "id": "meta-llama/Llama-3.1-8B-Instruct",
+            "name": "Meta: Llama 3.1 8B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.22,
+              "output": 0.22,
+              "cacheRead": 0.22
+            }
+          },
+          {
+            "id": "ibm-granite/granite-4.1-8b",
+            "name": "IBM: Granite 4.1 8B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.05,
+              "output": 0.1,
+              "cacheRead": 0.05
+            }
+          },
+          {
+            "id": "JetBrains/Mellum2-12B-A2.5B-Instruct",
+            "name": "JetBrains: Mellum2 12B A2.5B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.05,
+              "output": 0.1,
+              "cacheRead": 0.05
+            }
+          },
+          {
+            "id": "OpenPipe/Qwen3-14B-Instruct",
+            "name": "OpenPipe: Qwen3 14B Instruct",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 32768,
+            "maxTokens": 32768,
+            "cost": {
+              "input": 0.05,
+              "output": 0.22,
+              "cacheRead": 0.05
+            }
+          },
+          {
+            "id": "ibm-granite/granite-4.2-8b",
+            "name": "IBM: Granite 4.2 8B",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 131072,
+            "maxTokens": 131072,
+            "cost": {
+              "input": 0.1,
+              "output": 0.15,
+              "cacheRead": 0.05
+            }
+          },
+          {
+            "id": "MiniMaxAI/MiniMax-M3",
+            "name": "MiniMax: MiniMax M3",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.23,
+              "output": 0.96,
+              "cacheRead": 0.05
+            }
+          },
+          {
+            "id": "zai-org/GLM-5.3-Flash",
+            "name": "Z.ai: GLM 5.3 Flash",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 1048576,
+            "cost": {
+              "input": 0.15,
+              "output": 0.5,
+              "cacheRead": 0.05
+            }
+          },
+          {
+            "id": "zai-org/GLM-5.2",
+            "name": "Z.AI: GLM 5.2",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 1048576,
+            "cost": {
+              "input": 0.76,
+              "output": 2.42,
+              "cacheRead": 0.14
+            }
+          },
+          {
+            "id": "nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+            "name": "NVIDIA: Nemotron 3.5 Lightning",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.07,
+              "output": 0.2,
+              "cacheRead": 0.04
+            }
+          },
+          {
+            "id": "Qwen/Qwen3.8-27B",
+            "name": "Qwen: Qwen3.8 27B",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.4,
+              "output": 3.0,
+              "cacheRead": 0.15
+            }
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V4-Pro-0813",
+            "name": "DeepSeek: DeepSeek V4 Pro 0813",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 1048576,
+            "cost": {
+              "input": 1.31,
+              "output": 3.96,
+              "cacheRead": 0.044
+            }
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V4-Flash-0731",
+            "name": "DeepSeek: DeepSeek V4 Flash 0731",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.13,
+              "output": 0.28,
+              "cacheRead": 0.07
+            }
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+            "name": "DeepSeek: DeepSeek V4.1 Flash",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 1048576,
+            "cost": {
+              "input": 0.2,
+              "output": 0.65,
+              "cacheRead": 0.03
+            }
+          },
+          {
+            "id": "google/gemma-4-26B-A4B-it",
+            "name": "Google: Gemma 4 26B A4B",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 262144,
+            "cost": {
+              "input": 0.1,
+              "output": 0.3,
+              "cacheRead": 0.05
+            }
+          }
+        ]
+      }
+    },
+    "discovery": {
+      "coreweave": "refreshable"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "@coreweave/serverless-inference",
+  "version": "0.1.0",
+  "description": "CoreWeave Serverless Inference (formerly Weights & Biases Inference) model provider plugin for OpenClaw",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreweave/serverless-inference-openclaw-plugin.git"
+  },
+  "homepage": "https://github.com/coreweave/serverless-inference-openclaw-plugin#readme",
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "model-provider",
+    "coreweave",
+    "wandb",
+    "inference"
+  ],
+  "files": [
+    "assets/icon.png",
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSES",
+    "CATALOG_PROVENANCE.md"
+  ],
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "runtimeExtensions": [
+      "./dist/index.js"
+    ],
+    "providers": [
+      "coreweave"
+    ],
+    "compat": {
+      "pluginApi": ">=2026.6.2",
+      "minGatewayVersion": "2026.9.6"
+    },
+    "build": {
+      "openclawVersion": "2026.9.6",
+      "pluginSdkVersion": "2026.9.6"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.9.6"
+  },
+  "engines": {
+    "node": ">=24.16.0 <25 || >=26.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.9.1",
+    "openclaw": "2026.9.6",
+    "tsdown": "0.22.1",
+    "typescript": "6.0.3",
+    "vitest": "4.1.11"
+  }
+}
