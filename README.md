@@ -67,29 +67,22 @@ request (chat and model discovery). When unset, no header is sent.
 ## Models
 
 The plugin ships a verified catalog and filters it by IDs returned from the live `/v1/models`
-endpoint, falling back to the bundled catalog if discovery fails or returns no rows. Catalog metadata was checked on **2026-09-22** against the [CoreWeave catalog feed](https://trace.wandb.ai/inference/modelsdev/models). See [catalog provenance](./CATALOG_PROVENANCE.md) for field mapping and lifecycle details. Deprecated models remain available until their published retirement date.
+endpoint, falling back to the bundled catalog if discovery fails or returns no rows. Catalog
+metadata was checked on **2026-10-07** against the [CoreWeave catalog feed](https://trace.wandb.ai/inference/modelsdev/models). Models past their published retirement date are excluded. See [catalog provenance](./CATALOG_PROVENANCE.md)
+for field mapping and lifecycle details.
 
 | Model ID | Context tokens | Input | Reasoning |
 | --- | --- | --- | --- |
 | `moonshotai/Kimi-K2.7-Code` | 262144 | text, image | Yes |
 | `moonshotai/Kimi-K2.6` | 262144 | text, image | Yes |
-| `deepseek-ai/DeepSeek-V4-Pro` | 1048576 | text | Yes |
-| `deepseek-ai/DeepSeek-V4-Flash` | 1048576 | text | Yes |
 | `deepseek-ai/DeepSeek-V3.1` | 161000 | text | No |
-| `Qwen/Qwen3-30B-A3B-Instruct-2507` | 262144 | text | No |
 | `Qwen/Qwen3.6-35B-A3B` | 262144 | text, image | Yes |
-| `Qwen/Qwen3.6-27B` | 262144 | text, image | Yes |
-| `Qwen/Qwen3.5-35B-A3B` | 262144 | text, image | Yes |
 | `nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B` | 262144 | text | Yes |
 | `openai/gpt-oss-120b` | 131072 | text | Yes |
 | `openai/gpt-oss-20b` | 131072 | text | Yes |
 | `google/gemma-4-31B-it` | 262144 | text, image | Yes |
 | `meta-llama/Llama-3.3-70B-Instruct` | 128000 | text | No |
-| `meta-llama/Llama-3.1-70B-Instruct` | 131072 | text | No |
 | `meta-llama/Llama-3.1-8B-Instruct` | 131072 | text | No |
-| `ibm-granite/granite-4.1-8b` | 131072 | text | No |
-| `JetBrains/Mellum2-12B-A2.5B-Instruct` | 131072 | text | No |
-| `OpenPipe/Qwen3-14B-Instruct` | 32768 | text | No |
 | `ibm-granite/granite-4.2-8b` | 131072 | text | Yes |
 | `MiniMaxAI/MiniMax-M3` | 262144 | text, image | Yes |
 | `zai-org/GLM-5.3-Flash` | 1048576 | text, image | Yes |

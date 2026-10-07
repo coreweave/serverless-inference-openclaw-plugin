@@ -85,36 +85,6 @@
             }
           },
           {
-            "id": "deepseek-ai/DeepSeek-V4-Pro",
-            "name": "DeepSeek: DeepSeek V4 Pro",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 1048576,
-            "cost": {
-              "input": 1.15,
-              "output": 2.55,
-              "cacheRead": 0.2
-            }
-          },
-          {
-            "id": "deepseek-ai/DeepSeek-V4-Flash",
-            "name": "DeepSeek: DeepSeek V4 Flash",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1048576,
-            "maxTokens": 1048576,
-            "cost": {
-              "input": 0.14,
-              "output": 0.28,
-              "cacheRead": 0.07
-            }
-          },
-          {
             "id": "deepseek-ai/DeepSeek-V3.1",
             "name": "DeepSeek: DeepSeek V3.1",
             "reasoning": false,
@@ -130,55 +100,8 @@
             }
           },
           {
-            "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-            "name": "Qwen: Qwen3 30B A3B Instruct 2507",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 262144,
-            "maxTokens": 262144,
-            "cost": {
-              "input": 0.1,
-              "output": 0.3,
-              "cacheRead": 0.1
-            }
-          },
-          {
             "id": "Qwen/Qwen3.6-35B-A3B",
             "name": "Qwen: Qwen3.6 35B A3B",
-            "reasoning": true,
-            "input": [
-              "text",
-              "image"
-            ],
-            "contextWindow": 262144,
-            "maxTokens": 262144,
-            "cost": {
-              "input": 0.25,
-              "output": 1.25,
-              "cacheRead": 0.25
-            }
-          },
-          {
-            "id": "Qwen/Qwen3.6-27B",
-            "name": "Qwen: Qwen3.6 27B",
-            "reasoning": true,
-            "input": [
-              "text",
-              "image"
-            ],
-            "contextWindow": 262144,
-            "maxTokens": 262144,
-            "cost": {
-              "input": 0.6,
-              "output": 3.6,
-              "cacheRead": 0.12
-            }
-          },
-          {
-            "id": "Qwen/Qwen3.5-35B-A3B",
-            "name": "Qwen: Qwen3.5-35B-A3B",
             "reasoning": true,
             "input": [
               "text",
@@ -269,21 +192,6 @@
             }
           },
           {
-            "id": "meta-llama/Llama-3.1-70B-Instruct",
-            "name": "Meta: Llama 3.1 70B",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 131072,
-            "maxTokens": 131072,
-            "cost": {
-              "input": 0.8,
-              "output": 0.8,
-              "cacheRead": 0.8
-            }
-          },
-          {
             "id": "meta-llama/Llama-3.1-8B-Instruct",
             "name": "Meta: Llama 3.1 8B",
             "reasoning": false,
@@ -296,51 +204,6 @@
               "input": 0.22,
               "output": 0.22,
               "cacheRead": 0.22
-            }
-          },
-          {
-            "id": "ibm-granite/granite-4.1-8b",
-            "name": "IBM: Granite 4.1 8B",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 131072,
-            "maxTokens": 131072,
-            "cost": {
-              "input": 0.05,
-              "output": 0.1,
-              "cacheRead": 0.05
-            }
-          },
-          {
-            "id": "JetBrains/Mellum2-12B-A2.5B-Instruct",
-            "name": "JetBrains: Mellum2 12B A2.5B",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 131072,
-            "maxTokens": 131072,
-            "cost": {
-              "input": 0.05,
-              "output": 0.1,
-              "cacheRead": 0.05
-            }
-          },
-          {
-            "id": "OpenPipe/Qwen3-14B-Instruct",
-            "name": "OpenPipe: Qwen3 14B Instruct",
-            "reasoning": false,
-            "input": [
-              "text"
-            ],
-            "contextWindow": 32768,
-            "maxTokens": 32768,
-            "cost": {
-              "input": 0.05,
-              "output": 0.22,
-              "cacheRead": 0.05
             }
           },
           {
