@@ -1,30 +1,26 @@
 # Catalog provenance
 
-Catalog and published lifecycle checked: 2026-09-22 UTC.
+Catalog and lifecycle checked: 2026-10-07 UTC.
 
 Sources:
 
-- https://trace.wandb.ai/inference/modelsdev/models — CoreWeave-owned rich feed, 29 model IDs (checked September 22 at 17:26 UTC).
-- https://docs.wandb.ai/inference/lifecycle — retired IDs and October 5 retirements.
+- [CoreWeave catalog feed](https://trace.wandb.ai/inference/modelsdev/models) — 20 model IDs; response SHA-256 `1a5f647595c433e63541d582cd58ec73404eedfb0a6da5d9b2f2d1a8b00f52b7`.
+- [Model lifecycle](https://docs.coreweave.com/products/inference/serverless/lifecycle) — retirement dates and recommended replacements. The page was last modified 2026-10-06.
 
-The source feed response has SHA-256 `4fd2eacca3f8f8ca88353220bfa54e5ace7c126dcd3461e176f86669053cf49a`. The plugin manifest is a static snapshot; prices and lifecycle can change.
+The catalog is a static snapshot in `openclaw.plugin.json`; prices and lifecycle can change. Feed IDs, names, reasoning support, and input modalities are copied from the matching feed row. `limit.context` maps to `contextWindow`, `limit.output` to `maxTokens`, and input/output/cache-read prices remain in USD per million tokens. No feed row reports `cache_write`, so it is omitted rather than guessed.
 
-The September 22 refresh first added `deepseek-ai/DeepSeek-V4.1-Flash`. A later same-day feed added verified metadata for `google/gemma-4-26B-A4B-it`, which is now included; all 28 previously verified records remain unchanged. The saved same-day authenticated `/models` response also contains `Qwen/Qwen3-235B-A22B-Instruct-2507`. That ID remains excluded because it is retired and absent from the rich feed.
+Nine models reached their published retirement date of 2026-10-05 and were removed from the manifest and README:
 
-Each manifest ID/name/reasoning/input modality comes directly from the matching feed row. `limit.context` maps to `contextWindow`; `limit.output` maps to `maxTokens`; cost `input`/`output` retain USD per million tokens and `cache_read` maps to `cacheRead`. No feed row reports `cache_write`, so this field is omitted rather than asserting a rate. OpenClaw may normalize an omitted rate to its internal default; that is not a published CoreWeave cache-write price.
+| Retired model | Recommended replacement |
+| --- | --- |
+| `deepseek-ai/DeepSeek-V4-Flash` | `deepseek-ai/DeepSeek-V4-Flash-0731` |
+| `deepseek-ai/DeepSeek-V4-Pro` | `deepseek-ai/DeepSeek-V4-Pro-0813` |
+| `ibm-granite/granite-4.1-8b` | `ibm-granite/granite-4.2-8b` |
+| `JetBrains/Mellum2-12B-A2.5B-Instruct` | `ibm-granite/granite-4.2-8b` |
+| `meta-llama/Llama-3.1-70B-Instruct` | `meta-llama/Llama-3.3-70B-Instruct` |
+| `OpenPipe/Qwen3-14B-Instruct` | `Qwen/Qwen3.8-27B` |
+| `Qwen/Qwen3.6-27B` | `Qwen/Qwen3.8-27B` |
+| `Qwen/Qwen3.5-35B-A3B` | `Qwen/Qwen3.6-35B-A3B` |
+| `Qwen/Qwen3-30B-A3B-Instruct-2507` | `Qwen/Qwen3.6-35B-A3B` |
 
-Seven exact retired IDs from the prior manifest are excluded. Plain Kimi-K2.5 and GLM-5.1 are also absent from this verified feed; their omission is not a claim that differently named retired variants are equivalent. The September 14 `/models` response advertised retired `Qwen/Qwen3-235B-A22B-Instruct-2507`; discovery therefore intersects live IDs with this verified manifest and warns about unsupported IDs instead of guessing metadata.
-
-The following nine deprecated IDs remain in this snapshot because their published retirement date is October 5, 2026 (extended from September 28):
-
-- deepseek-ai/DeepSeek-V4-Flash
-- deepseek-ai/DeepSeek-V4-Pro
-- ibm-granite/granite-4.1-8b
-- JetBrains/Mellum2-12B-A2.5B-Instruct
-- meta-llama/Llama-3.1-70B-Instruct
-- OpenPipe/Qwen3-14B-Instruct
-- Qwen/Qwen3.6-27B
-- Qwen/Qwen3.5-35B-A3B
-- Qwen/Qwen3-30B-A3B-Instruct-2507
-
-Refresh the rich feed and lifecycle source together before updating this snapshot. Remove retired entries in a catalog update when their retirement takes effect; this static snapshot does not schedule removals automatically. The feed is metadata evidence, not a test of every model. Streaming usage compatibility remains an independent runtime validation item.
+The currently published feed contains 20 IDs, all represented in the bundled catalog. The plugin intersects live `/models` IDs with this verified metadata and skips unknown IDs rather than guessing their limits or capabilities. Refresh the feed and lifecycle page together before the next catalog update. Streaming usage compatibility remains a separate runtime validation item.

@@ -139,6 +139,23 @@ describe("coreweave provider plugin", () => {
     expect(COREWEAVE_MODEL_CATALOG.some((m) => m.id === defaultId)).toBe(true);
   });
 
+  it("excludes models past their published retirement date", () => {
+    const retiredIds = [
+      "deepseek-ai/DeepSeek-V4-Flash",
+      "deepseek-ai/DeepSeek-V4-Pro",
+      "ibm-granite/granite-4.1-8b",
+      "JetBrains/Mellum2-12B-A2.5B-Instruct",
+      "meta-llama/Llama-3.1-70B-Instruct",
+      "OpenPipe/Qwen3-14B-Instruct",
+      "Qwen/Qwen3.6-27B",
+      "Qwen/Qwen3.5-35B-A3B",
+      "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    ];
+    const catalogIds = new Set(COREWEAVE_MODEL_CATALOG.map((model) => model.id));
+
+    expect(retiredIds.filter((id) => catalogIds.has(id))).toEqual([]);
+  });
+
   it("exposes a static catalog for credential-free discovery", async () => {
     const registered = await registerSingleProviderPlugin(plugin);
     const provider = readProvider(await registered.staticCatalog?.run({ config: {} } as never));
