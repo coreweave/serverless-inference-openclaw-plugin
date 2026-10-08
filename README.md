@@ -189,6 +189,10 @@ on the supported runtime before declaring the release verified. See the
 [ClawHub publishing requirements](https://docs.openclaw.ai/clawhub/publishing)
 for ownership and release visibility details.
 
+## Request attribution
+
+The plugin sends `X-CoreWeave-Client: openclaw-plugin` on model discovery and inference requests. This identifies the integration for diagnostics and usage analytics. It does not change authentication, project selection, or billing.
+
 ## License
 
 MIT — see [MIT license](./LICENSES/MIT.txt).

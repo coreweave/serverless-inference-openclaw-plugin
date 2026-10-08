@@ -117,7 +117,7 @@ describe("coreweave provider plugin", () => {
     expect(provider?.baseUrl).toBe(COREWEAVE_BASE_URL);
     expect(provider?.apiKey).toBe("test-key");
     expect(provider?.models?.length ?? 0).toBeGreaterThan(0);
-    expect(provider?.headers).toBeUndefined();
+    expect(provider?.headers).toEqual({ "X-CoreWeave-Client": "openclaw-plugin" });
   });
 
   it("attaches the openai-project header when the plugin project config is set", async () => {
@@ -130,6 +130,7 @@ describe("coreweave provider plugin", () => {
       resolveProviderApiKey: () => ({ apiKey: "test-key" }),
     });
     expect(provider?.headers).toEqual({
+      "X-CoreWeave-Client": "openclaw-plugin",
       "openai-project": "my-team/my-project",
     });
   });
@@ -160,6 +161,7 @@ describe("coreweave provider plugin", () => {
     const registered = await registerSingleProviderPlugin(plugin);
     const provider = readProvider(await registered.staticCatalog?.run({ config: {} } as never));
     expect(provider?.models?.length ?? 0).toBeGreaterThan(0);
+    expect(provider?.headers).toEqual({ "X-CoreWeave-Client": "openclaw-plugin" });
   });
 
   it("scopes the discovery cache by credential and project", () => {
@@ -211,7 +213,7 @@ describe("public SDK migration", () => {
     expect(next.models?.mode).toBe("replace");
     expect(next.models?.providers?.coreweave).toMatchObject({
       apiKey: "saved-key",
-      headers: { "openai-project": "team/project" },
+      headers: { "openai-project": "team/project", "X-CoreWeave-Client": "openclaw-plugin" },
     });
     expect(next.models?.providers?.coreweave?.models[0]).toEqual(custom);
     expect(next.models?.providers?.coreweave?.models).toHaveLength(COREWEAVE_MODEL_CATALOG.length);
@@ -321,6 +323,7 @@ describe("public SDK migration", () => {
         init: {
           headers: {
             Accept: "application/json",
+            "X-CoreWeave-Client": "openclaw-plugin",
             Authorization: "Bearer cache-key",
             "openai-project": "team/one",
           },

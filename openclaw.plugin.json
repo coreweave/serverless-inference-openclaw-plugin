@@ -52,6 +52,9 @@
       "coreweave": {
         "baseUrl": "https://api.inference.wandb.ai/v1",
         "api": "openai-completions",
+        "headers": {
+          "X-CoreWeave-Client": "openclaw-plugin"
+        },
         "models": [
           {
             "id": "moonshotai/Kimi-K2.7-Code",
