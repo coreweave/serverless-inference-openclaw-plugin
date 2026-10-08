@@ -1,6 +1,6 @@
 {
   "name": "@coreweave/serverless-inference",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CoreWeave Serverless Inference (formerly Weights & Biases Inference) model provider plugin for OpenClaw",
   "license": "MIT",
   "type": "module",

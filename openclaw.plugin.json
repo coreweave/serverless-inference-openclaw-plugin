@@ -1,6 +1,6 @@
 {
   "id": "coreweave",
-  "name": "CoreWeave",
+  "name": "CoreWeave Inference",
   "description": "CoreWeave Serverless Inference (formerly Weights & Biases Inference) model provider for OpenClaw.",
   "activation": {
     "onStartup": false
