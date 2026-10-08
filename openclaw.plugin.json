@@ -14,6 +14,7 @@
       "method": "api-key",
       "choiceId": "coreweave-api-key",
       "choiceLabel": "CoreWeave API key",
+      "appGuidedSecret": true,
       "groupId": "coreweave",
       "groupLabel": "CoreWeave",
       "groupHint": "Open models on CoreWeave GPUs (formerly Weights & Biases Inference)",
