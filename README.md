@@ -189,6 +189,10 @@ on the supported runtime before declaring the release verified. See the
 [ClawHub publishing requirements](https://docs.openclaw.ai/clawhub/publishing)
 for ownership and release visibility details.
 
+## Request attribution
+
+The plugin sends `User-Agent: openclaw-coreweave/0.1.1` on model discovery and inference requests. This identifies the OpenClaw integration for diagnostics and usage analytics instead of the underlying SDK. Keep the version in the manifest header aligned with the package version when publishing. It does not change authentication, project selection, or billing.
+
 ## License
 
 MIT — see [MIT license](./LICENSES/MIT.txt).
