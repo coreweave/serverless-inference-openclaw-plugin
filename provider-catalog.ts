@@ -6,7 +6,7 @@
 import type { ModelProviderConfig } from "./model-types.js";
 import {
   COREWEAVE_BASE_URL,
-  COREWEAVE_CLIENT_HEADERS,
+  COREWEAVE_REQUEST_HEADERS,
   COREWEAVE_MODEL_CATALOG,
   buildCoreweaveModelDefinition,
   discoverCoreweaveModels,
@@ -17,7 +17,7 @@ export function buildStaticCoreweaveProvider(): ModelProviderConfig {
   return {
     baseUrl: COREWEAVE_BASE_URL,
     api: "openai-completions",
-    headers: { ...COREWEAVE_CLIENT_HEADERS },
+    headers: { ...COREWEAVE_REQUEST_HEADERS },
     models: COREWEAVE_MODEL_CATALOG.map(buildCoreweaveModelDefinition),
   };
 }
@@ -31,7 +31,7 @@ export async function buildCoreweaveProvider(
   return {
     baseUrl: COREWEAVE_BASE_URL,
     api: "openai-completions",
-    headers: { ...COREWEAVE_CLIENT_HEADERS, ...(project ? { "openai-project": project } : {}) },
+    headers: { ...COREWEAVE_REQUEST_HEADERS, ...(project ? { "openai-project": project } : {}) },
     models,
   };
 }

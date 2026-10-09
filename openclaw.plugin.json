@@ -53,7 +53,7 @@
         "baseUrl": "https://api.inference.wandb.ai/v1",
         "api": "openai-completions",
         "headers": {
-          "X-CoreWeave-Client": "openclaw-plugin"
+          "User-Agent": "openclaw-coreweave/0.1.1"
         },
         "models": [
           {

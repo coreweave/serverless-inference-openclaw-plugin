@@ -191,7 +191,7 @@ for ownership and release visibility details.
 
 ## Request attribution
 
-The plugin sends `X-CoreWeave-Client: openclaw-plugin` on model discovery and inference requests. This identifies the integration for diagnostics and usage analytics. It does not change authentication, project selection, or billing.
+The plugin sends `User-Agent: openclaw-coreweave/0.1.1` on model discovery and inference requests. This identifies the OpenClaw integration for diagnostics and usage analytics instead of the underlying SDK. Keep the version in the manifest header aligned with the package version when publishing. It does not change authentication, project selection, or billing.
 
 ## License
 
