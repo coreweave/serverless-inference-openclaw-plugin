@@ -45,10 +45,13 @@
     }
   },
   "scripts": {
+    "prebuild": "node scripts/sync-manifest.mjs",
     "build": "tsdown",
     "typecheck": "tsc --noEmit",
+    "pretest": "node scripts/sync-manifest.mjs",
     "test": "vitest run",
-    "prepublishOnly": "npm run build"
+    "version": "node scripts/sync-manifest.mjs && git add openclaw.plugin.json",
+    "prepack": "npm run build"
   },
   "peerDependencies": {
     "openclaw": ">=2026.9.6"

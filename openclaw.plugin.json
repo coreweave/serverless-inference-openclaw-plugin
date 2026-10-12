@@ -299,7 +299,7 @@
             "maxTokens": 262144,
             "cost": {
               "input": 0.4,
-              "output": 3.0,
+              "output": 3,
               "cacheRead": 0.15
             }
           },
