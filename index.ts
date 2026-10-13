@@ -74,7 +74,6 @@ const provider: ProviderPlugin = {
         provider: {
           ...(await buildCoreweaveProvider(apiKey, project)),
           apiKey,
-          ...(project ? { headers: { "openai-project": project } } : {}),
         },
       };
     },

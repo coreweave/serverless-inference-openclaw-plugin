@@ -7,6 +7,7 @@ import { registerSingleProviderPlugin } from "./test-helpers.js";
 import type { ModelProviderConfig } from "./model-types.js";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import plugin from "./index.js";
+import packageMetadata from "./package.json" with { type: "json" };
 import { fetchWithSsrFGuard } from "openclaw/plugin-sdk/ssrf-runtime";
 import { applyCoreweaveConfig } from "./onboard.js";
 import type { OpenClawConfig } from "openclaw/plugin-sdk/config-contracts";
@@ -17,6 +18,7 @@ vi.mock("openclaw/plugin-sdk/ssrf-runtime", async (original) => ({
   fetchWithSsrFGuard: vi.fn(),
 }));
 
+const expectedUserAgent = `openclaw-coreweave/${packageMetadata.version}`;
 const guardedFetch = vi.mocked(fetchWithSsrFGuard);
 beforeEach(() => {
   vi.useRealTimers();
@@ -117,7 +119,7 @@ describe("coreweave provider plugin", () => {
     expect(provider?.baseUrl).toBe(COREWEAVE_BASE_URL);
     expect(provider?.apiKey).toBe("test-key");
     expect(provider?.models?.length ?? 0).toBeGreaterThan(0);
-    expect(provider?.headers).toBeUndefined();
+    expect(provider?.headers).toEqual({ "User-Agent": expectedUserAgent });
   });
 
   it("attaches the openai-project header when the plugin project config is set", async () => {
@@ -130,6 +132,7 @@ describe("coreweave provider plugin", () => {
       resolveProviderApiKey: () => ({ apiKey: "test-key" }),
     });
     expect(provider?.headers).toEqual({
+      "User-Agent": expectedUserAgent,
       "openai-project": "my-team/my-project",
     });
   });
@@ -160,6 +163,7 @@ describe("coreweave provider plugin", () => {
     const registered = await registerSingleProviderPlugin(plugin);
     const provider = readProvider(await registered.staticCatalog?.run({ config: {} } as never));
     expect(provider?.models?.length ?? 0).toBeGreaterThan(0);
+    expect(provider?.headers).toEqual({ "User-Agent": expectedUserAgent });
   });
 
   it("scopes the discovery cache by credential and project", () => {
@@ -211,7 +215,7 @@ describe("public SDK migration", () => {
     expect(next.models?.mode).toBe("replace");
     expect(next.models?.providers?.coreweave).toMatchObject({
       apiKey: "saved-key",
-      headers: { "openai-project": "team/project" },
+      headers: { "openai-project": "team/project", "User-Agent": expectedUserAgent },
     });
     expect(next.models?.providers?.coreweave?.models[0]).toEqual(custom);
     expect(next.models?.providers?.coreweave?.models).toHaveLength(COREWEAVE_MODEL_CATALOG.length);
@@ -321,6 +325,7 @@ describe("public SDK migration", () => {
         init: {
           headers: {
             Accept: "application/json",
+            "User-Agent": expectedUserAgent,
             Authorization: "Bearer cache-key",
             "openai-project": "team/one",
           },

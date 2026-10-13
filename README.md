@@ -146,7 +146,7 @@ npm run build      # tsdown -> dist/index.js (+ .d.ts)
 ```
 
 The published package ships built JavaScript: `openclaw.runtimeExtensions`
-points at `./dist/index.js`, and `prepublishOnly` runs the build.
+points at `./dist/index.js`, and `prepack` runs the build before packing or publishing.
 
 ## Publishing to ClawHub
 
@@ -167,6 +167,8 @@ clawhub package publish . --family code-plugin --owner coreweave --dry-run
 The source argument `.` is the local package folder. ClawHub packs its contents
 into an npm tarball; the package name is read from `package.json`. Publishing to
 npm is not required for the `clawhub:` installation route.
+Run the build explicitly before ClawHub validation or publication; its packing
+step skips npm lifecycle scripts.
 Review the dry-run output for the intended package name, version, GitHub
 repository, and exact source commit before publishing.
 
@@ -188,6 +190,10 @@ environment. Check model listing, streaming, and a tool-driven read/edit/reread
 on the supported runtime before declaring the release verified. See the
 [ClawHub publishing requirements](https://docs.openclaw.ai/clawhub/publishing)
 for ownership and release visibility details.
+
+## Request attribution
+
+The plugin sends `User-Agent: openclaw-coreweave/<version>` on model discovery and inference requests. This identifies the OpenClaw integration for diagnostics and usage analytics instead of the underlying SDK. The manifest header is generated from `package.json` during version bumps, tests, and builds; no separate version edit is needed. It does not change authentication, project selection, or billing.
 
 ## License
 

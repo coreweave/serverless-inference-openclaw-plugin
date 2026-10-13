@@ -20,6 +20,7 @@ const catalog = manifest.modelCatalog.providers.coreweave;
 
 /** Base URL for CoreWeave Serverless Inference (OpenAI-compatible). */
 export const COREWEAVE_BASE_URL = catalog.baseUrl;
+export const COREWEAVE_REQUEST_HEADERS = catalog.headers;
 const COREWEAVE_DEFAULT_MODEL_ID = "moonshotai/Kimi-K2.6";
 /** Default CoreWeave model ref used for onboarding. */
 export const COREWEAVE_DEFAULT_MODEL_REF = `coreweave/${COREWEAVE_DEFAULT_MODEL_ID}`;
@@ -105,6 +106,7 @@ async function fetchCoreweaveModelRows(
     init: {
       headers: {
         Accept: "application/json",
+        ...COREWEAVE_REQUEST_HEADERS,
         ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
         ...(project ? { "openai-project": project } : {}),
       },

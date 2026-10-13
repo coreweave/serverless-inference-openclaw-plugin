@@ -25,6 +25,7 @@ export function applyCoreweaveConfig(cfg: OpenClawConfig): OpenClawConfig {
         coreweave: {
           ...existing,
           ...catalog,
+          headers: { ...existing?.headers, ...catalog.headers },
           models: [
             ...models,
             ...catalog.models.filter((row) => !models.some((model) => model.id === row.id)),
